@@ -1,0 +1,15 @@
+<h2 style="margin-top:50px">Sample test data</h2>
+
+<table>
+  <tr>
+    <th>Course</th>
+    <th>Credit Value</th> 
+    <th>Grade</th>
+  </tr>
+  <tr *ngFor="let course of courses">
+    <td>{{course.name}}</td>
+    <td>{{course.credit}}</td> 
+    <td>{{course.grade}}<button class=delete (click)="remove(courses, course.name)">X</button></td>
+  </tr>
+</table>
+<button class=b1 [routerLink]="['/result']" [queryParams]="{id:detail}">Calculate GPA</button>

@@ -1,0 +1,44 @@
+<form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
+  <div>
+  <table>
+  <tr>
+    <th>Course</th>
+    <th>Credit Value</th> 
+    <th>Grade</th>
+  </tr>
+  <tr>
+    <td><input type="text" name="name" ngModel placeholder="Enter Course name" required></td>
+    <td><input type="number" name="credit" ngModel placeholder="Enter Course credit" required></td> 
+    <td>
+      <select name="grade" ngModel [(ngModel)]="defaultValue">
+          <option value="A">A</option>
+          <option value="B+">B+</option>
+          <option value="B">B</option>
+          <option value="C+">C+</option>
+          <option value="C">C</option>
+          <option value="D+">D+</option>
+          <option value="D">D</option>
+          <option value="F">F</option>
+        </select>
+    </td>
+  </tr>
+  </table>
+  <button class=b1>Submit</button>
+</div>
+</form>
+<p class=exist *ngIf="exist">Unable to add, course "{{exist}}" already exist</p>
+
+<table style="margin-top:50px">
+  <tr>
+    <th>Course</th>
+    <th>Credit Value</th> 
+    <th>Grade</th>
+  </tr>
+  <tr *ngFor="let course of courses">
+    <td>{{course.name}}</td>
+    <td>{{course.credit}}</td> 
+    <td>{{course.grade}}<button class=delete (click)="remove(courses, course.name)">X</button></td>
+  </tr>
+ </table>
+ <button class=b1 [routerLink]="['/result']" [queryParams]="{id:detail}"> Calculate GPA</button>
+ <app-sample></app-sample>
